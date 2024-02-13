@@ -1,12 +1,15 @@
-//___FILEHEADER___
-
 import SwiftUI
+import Observation
 
 @main
-struct ___PACKAGENAME:identifier___App: App {
+struct HW_2_Problem3_Plot: App {
+    
+    @State var plotData = PlotClass()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(plotData)
         }
     }
 }
