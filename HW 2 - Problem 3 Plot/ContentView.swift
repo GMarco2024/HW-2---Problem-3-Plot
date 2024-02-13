@@ -66,50 +66,19 @@ struct ContentView: View {
         Divider()
         
         // TextField for entering N above the "plotSN3" button
-        TextField("Enter N", text: $inputN4)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
+      
     
-            HStack{
-                Button("plotSN3", action: {
-                    
-                    Task.init{
-                    
-                    self.selector = 0
-                    await self.calculate()
+            HStack {
+                            Button("Plot Relative Difference", action: {
+                                Task {
+                                    self.selector = 0
+                                    await self.calculate()
+                                }
+                            })
+                            .padding()
+                        }
                     }
-                    
-                    
-                    
                 }
-                
-                
-                )
-                .padding()
-                
-            }
-            
-            HStack{
-                Button("Log10N", action: { Task.init{
-                    
-                    self.selector = 1
-                    
-                    await self.calculate2()
-                    
-                    
-                }
-                }
-                
-                
-                )
-                .padding()
-                
-            }
-            
-        }
-        
-    
-    }
     
     @MainActor func setupPlotDataModel(selector: Int){
         
@@ -166,26 +135,11 @@ struct ContentView: View {
 
                 taskGroup.addTask {
 
-        
-       
-        
-        
-        
-        //Calculate the new plotting data and place in the plotDataModel
-        await calculator.log10N()
-                  
-                    
-                }
-                
             }
-            
+                
+        }
         
-        
-
     }
-    
-
-   
     
 }
 

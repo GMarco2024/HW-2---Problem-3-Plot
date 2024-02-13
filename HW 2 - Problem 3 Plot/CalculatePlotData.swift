@@ -52,21 +52,9 @@ import Observation
     /// - Parameter plotData: Array of (x, y) points to be added to the plot
     @MainActor func appendDataToPlot(plotData: [(x: Double, y: Double)]) {
         plotDataModel!.appendData(dataPoint: plotData)
-    }
-    
-    func log10N() async {
-        let N = 100 // Example range for N values
-        var plotData: [(x: Double, y: Double)] = []
         
-        for n in 1...N {
-            let logValue = log10(Double(n))
-            // For plotting, treat n as x and logValue as y
-            plotData.append((x: Double(n), y: logValue))
-        }
         
-        await setThePlotParameters(color: "Blue", xLabel: "N", yLabel: "log10(N)", title: "Plot of log10(N)", xMin: 1.0, xMax: Double(N), yMin: plotData.first?.y ?? 0.0, yMax: plotData.last?.y ?? 1.0)
         
-        await appendDataToPlot(plotData: plotData)
         
         
     }
@@ -88,6 +76,7 @@ import Observation
         
         await appendDataToPlot(plotData: plotData)
     }
+    
     
     
 }
